@@ -5,10 +5,10 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Alert,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function Verifycode({ navigation }) {
   const [verificationCode, setVerificationCode] = useState("");
@@ -59,11 +59,7 @@ export default function Verifycode({ navigation }) {
   };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-      }}
-    >
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <View style={styles.container}>
         <Text style={styles.title}>Vérification par e-mail</Text>
@@ -87,7 +83,7 @@ export default function Verifycode({ navigation }) {
           disabled={timerActive}
           onPress={handleResendCode}
         >
-           <Text style={styles.recuText}>Vous n'avez pas reçu l'e-mail ?
+           <Text style={styles.recuText}>Vous n'avez pas reçu l'e-mail ? 
                 <Text style={styles.resendButtonText}>
                 {timerActive ? `Renvoyer dans ${timer} secondes` : ' Renvoyer le code'}
                 </Text>
@@ -105,66 +101,52 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    padding: wp('5%'), // Espacement avec une largeur dynamique
     backgroundColor: '#EEEEEE',
   },
-  sign: {
-    bottom: 230,
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500', // Utilisez '500' comme chaîne de caractères
-  },
   title: {
-    fontSize: 24,
+    fontSize: wp('7%'),
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 10,
-    bottom: 170,
-    right: 38,
+    marginBottom: hp('3%'),
+    right: wp('1%'),
   },
   instructions: {
-    fontSize: 16,
-    marginBottom: 20,
+    fontSize: wp('4%'),
+    marginBottom: hp('15%'),
     color: '#666',
-    bottom: 160,
   },
   codeContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    bottom: 40,
-  },
-  hello: {
-    marginBottom: 20,
-  },
-  hi: {
-    color: "#CD5C08",
+    marginBottom: hp('5%'), 
   },
   codeInput: {
-    width: 70,
-    height: 70,
+    width: wp('15%'), 
+    height: wp('15%'), 
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 5,
-    marginHorizontal: 10,
+    borderRadius: wp('2%'), 
+    marginHorizontal: wp('2%'),
     textAlign: "center",
-    fontSize: 20,
+    fontSize: wp('6%'), 
   },
   suivButton: {
     backgroundColor: '#DC5F00',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: hp('2.5%'), 
+    borderRadius: wp('2%'),
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp('2%'), 
   },
   suivButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('5%'),
     fontWeight: 'bold',
   },
-  recuText:{
-    marginBottom:20
+  recuText: {
+    marginBottom: hp('2%'),
   },
-  resendButtonText:{
-    color: "#DC5F00"
+  resendButtonText: {
+    color: "#DC5F00",
+    fontWeight: 'bold',
   }
 });

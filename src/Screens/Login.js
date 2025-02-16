@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Checkbox } from 'react-native-paper';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function Login({ navigation }) {
   const [rememberMe, setRememberMe] = useState(false);
@@ -9,14 +10,12 @@ export default function Login({ navigation }) {
 
   const handleSignIn = () => {
     if (!rememberMe) {
-      // Si la case n'est pas cochée, affichez une erreur
       setError(true);
       Alert.alert('Erreur', 'Vous devez cocher "Conditions" pour continuer.');
     } else {
-      // Si la case est cochée, procédez à la connexion
       setError(false);
       Alert.alert('Succès', 'Connexion réussie !');
-      navigation.navigate('home'); // Naviguer vers l'écran principal après la validation
+      navigation.navigate('home');
     }
   };
 
@@ -25,39 +24,19 @@ export default function Login({ navigation }) {
       <Text style={styles.welcomeText}>Bienvenue </Text>
       <Text style={styles.subText}>Entrez votre adresse e-mail pour vous connecter</Text>
 
-      {/* Champ Email avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="envelope" size={20} color="#666" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Adresse e-mail"
-          placeholderTextColor="#999"
-          keyboardType="email-address"
-        />
+        <Icon name="envelope" size={wp('5%')} color="#666" style={styles.icon} />
+        <TextInput style={styles.input} placeholder="Adresse e-mail" placeholderTextColor="#999" keyboardType="email-address" />
       </View>
 
-      {/* Champ Password avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} color="#666" style={styles.icon} />
-        <TextInput
-          style={styles.input}
-          placeholder="Mot de passe"
-          placeholderTextColor="#999"
-          secureTextEntry
-        />
+        <Icon name="lock" size={wp('5%')} color="#666" style={styles.icon} />
+        <TextInput style={styles.input} placeholder="Mot de passe" placeholderTextColor="#999" secureTextEntry />
       </View>
 
-      {/* Remember Me et Forget Password */}
       <View style={styles.rememberMeContainer}>
         <View style={styles.checkboxContainer}>
-          <Checkbox
-            status={rememberMe ? 'checked' : 'unchecked'} // État de la case à cocher
-            onPress={() => {
-              setRememberMe(!rememberMe);
-              setError(false); // Réinitialiser l'erreur lorsque l'utilisateur coche la case
-            }}
-            color="#CD5C08" // Couleur de la case à cocher
-          />
+          <Checkbox status={rememberMe ? 'checked' : 'unchecked'} onPress={() => setRememberMe(!rememberMe)} color="#CD5C08" />
           <Text style={styles.rememberMeText}>Conditions</Text>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('forget')}>
@@ -65,19 +44,16 @@ export default function Login({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* Affichage de l'erreur si la case n'est pas cochée */}
-      {error && <Text style={styles.errorText}>Vous devez cocher "Remember Me" pour continuer.</Text>}
+      {error && <Text style={styles.errorText}>Vous devez cocher "Conditions" pour continuer.</Text>}
 
-      {/* Bouton Sign In */}
       <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
         <Text style={styles.signInButtonText}>Connexion</Text>
       </TouchableOpacity>
 
-      {/* Lien Sign Up */}
       <Text style={styles.signUpText}>
-      Vous n'avez pas de compte ?{' '}
+        Vous n'avez pas de compte ?{' '}
         <Text style={styles.signUpLink} onPress={() => navigation.navigate('signup')}>
-        S'inscrire
+          S'inscrire
         </Text>
       </Text>
     </View>
@@ -88,49 +64,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    paddingHorizontal: wp('5%'),
     backgroundColor: '#EEEEEE',
   },
-  sign: {
-    bottom: 150,
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500',
-  },
   welcomeText: {
-    fontSize: 23,
+    fontSize: wp('7%'),
     fontWeight: 'bold',
-    marginBottom: 10,
-    bottom: 90,
-  
+    marginBottom: hp('3%'),
+    right:wp('1%')
   },
   subText: {
-    fontSize: 16,
-    marginBottom: 20,
+    fontSize: wp('4%'),
+    marginBottom: hp('15%'),
     color: '#666',
-    bottom: 80,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 25,
-    paddingHorizontal: 10,
+    borderRadius: wp('2%'),
+    marginBottom: hp('3%'),
+    paddingHorizontal: wp('3%'),
+    height: hp('6%'),
   },
   icon: {
-    marginRight: 10,
+    marginRight: wp('2%'),
   },
   input: {
     flex: 1,
-    height: 50,
+    fontSize: wp('4%'),
   },
   rememberMeContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 25,
+    marginBottom: hp('2%'),
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -138,27 +107,29 @@ const styles = StyleSheet.create({
   },
   rememberMeText: {
     color: '#666',
-    marginLeft: 10,
+    marginLeft: wp('2%'),
+    fontSize: wp('4%'),
   },
   forgotPasswordText: {
     color: '#666',
+    fontSize: wp('4%'),
   },
   signInButton: {
     backgroundColor: '#DC5F00',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: hp('1.5%'),
+    borderRadius: wp('2%'),
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp('2%'),
   },
   signInButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('4.5%'),
     fontWeight: 'bold',
   },
   signUpText: {
     textAlign: 'center',
     color: '#666',
-    marginBottom: 20,
+    fontSize: wp('4%'),
   },
   signUpLink: {
     color: '#CD5C08',
@@ -166,8 +137,8 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
-    fontSize: 14,
-    marginBottom: 10,
+    fontSize: wp('3.5%'),
+    marginBottom: hp('1%'),
     textAlign: 'center',
   },
 });

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function Forgetpass({ navigation }) {
   return (
@@ -12,7 +13,7 @@ export default function Forgetpass({ navigation }) {
 
       {/* Champ Adresse e-mail avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="envelope" size={20} color="#666" style={styles.icon} />
+        <Icon name="envelope" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Adresse e-mail"
@@ -21,8 +22,21 @@ export default function Forgetpass({ navigation }) {
       </View>
 
       {/* Bouton Réinitialiser le mot de passe */}
-      <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('verify')}>
+      <TouchableOpacity
+        style={styles.signInButton}
+        onPress={() => navigation.navigate('verify')}
+        activeOpacity={0.8}
+      >
         <Text style={styles.signInButtonText}>Réinitialiser le mot de passe</Text>
+      </TouchableOpacity>
+
+      {/* Bouton de retour à la page de connexion */}
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.backButtonText}>Retour à la connexion</Text>
       </TouchableOpacity>
     </View>
   );
@@ -32,53 +46,59 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    paddingHorizontal: wp('5%'), 
     backgroundColor: '#EEEEEE',
   },
-  sign: {
-    bottom: 225,
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500',
-  },
   welcomeText: {
-    fontSize: 23,
+    fontSize: wp('7%'),
     fontWeight: 'bold',
-    bottom: 160,
-  
+    marginBottom: hp('3%'),
+    right: wp('1%'),
   },
   subText: {
-    fontSize: 16,
-    marginBottom: 20,
+    fontSize: wp('4%'),
+    marginBottom: hp('15%'),
     color: '#666',
-    bottom: 140,
+
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 50,
-    paddingHorizontal: 10,
+    borderRadius: wp('2%'),
+    marginBottom: hp('3%'),
+    paddingHorizontal: wp('3%'),
+    height: hp('6%'),
   },
   icon: {
-    marginRight: 10,
+    marginRight: wp('3%'),
   },
   input: {
     flex: 1,
-    height: 50,
+    fontSize: wp('4.5%'),
+    paddingVertical: hp('1%'),
   },
   signInButton: {
     backgroundColor: '#DC5F00',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: hp('2.5%'),
+    borderRadius: wp('2%'),
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp('3%'),
   },
   signInButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('5%'),
     fontWeight: 'bold',
+  },
+  backButton: {
+    marginTop: hp('2%'),
+    alignItems: 'center',
+  },
+  backButtonText: {
+    color: '#666',
+    fontSize: wp('4%'),
+    fontWeight: 'bold',
+    textDecorationLine: 'underline', 
   },
 });

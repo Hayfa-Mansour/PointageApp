@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function Modepasse({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.subText}>
-      Écrivez s'il vous plaît votre nouveau mot de passe :
+        Écrivez s'il vous plaît votre nouveau mot de passe :
       </Text>
 
-      {/* Champ Adresse e-mail avec icône */}
+      {/* Champ Nouveau mot de passe avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} color="#666" style={styles.icon} />
+        <Icon name="lock" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Nouveau mot de passe"
           placeholderTextColor="#999"
         />
       </View>
+
+      {/* Champ Confirmez le mot de passe avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} color="#666" style={styles.icon} />
+        <Icon name="lock" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Confirmez le mot de passe"
@@ -27,7 +30,7 @@ export default function Modepasse({ navigation }) {
         />
       </View>
 
-      {/* Bouton Réinitialiser le mot de passe */}
+      {/* Bouton Modifier */}
       <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('verify')}>
         <Text style={styles.signInButtonText}>Modifier</Text>
       </TouchableOpacity>
@@ -39,53 +42,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: wp('5%'), 
     backgroundColor: '#EEEEEE',
   },
-  sign: {
-    bottom: 225,
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500',
-  },
-  welcomeText: {
-    fontSize: 23,
-    fontWeight: 'bold',
-    bottom: 160,
-  
-  },
   subText: {
-    fontSize: 16,
-    marginBottom: 20,
+    fontSize: wp('4%'),
+    marginBottom: hp('15%'),
     color: '#666',
-    bottom: 150,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 30,
-    paddingHorizontal: 10,
+    borderRadius: wp('2%'),
+    marginBottom: hp('3%'),
+    paddingHorizontal: wp('3%'),
+    height: hp('6%'),
   },
   icon: {
-    marginRight: 10,
+    marginRight: wp('3%'), 
   },
   input: {
     flex: 1,
-    height: 50,
+    height: hp('6%'), 
+    fontSize: wp('4.5%'), 
   },
   signInButton: {
     backgroundColor: '#DC5F00',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: hp('2.5%'), 
+    borderRadius: wp('2%'),
     alignItems: 'center',
-    marginTop:20
+    marginTop: hp('3%'), 
   },
   signInButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('5%'), // Taille du texte responsive
     fontWeight: 'bold',
   },
 });

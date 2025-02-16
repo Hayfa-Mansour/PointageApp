@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Importation des icônes
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const Signup = () => {
   return (
@@ -13,7 +14,7 @@ const Signup = () => {
 
       {/* Champ Nom d'utilisateur avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="user" size={20} color="#666" style={styles.icon} />
+        <Icon name="user" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Nom d'utilisateur"
@@ -22,7 +23,7 @@ const Signup = () => {
 
       {/* Champ Adresse e-mail avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="envelope" size={20} color="#666" style={styles.icon} />
+        <Icon name="envelope" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Adresse e-mail"
@@ -32,7 +33,7 @@ const Signup = () => {
 
       {/* Champ Mot de passe avec icône */}
       <View style={styles.inputContainer}>
-        <Icon name="lock" size={20} color="#666" style={styles.icon} />
+        <Icon name="lock" size={wp('5%')} color="#666" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Mot de passe"
@@ -51,26 +52,20 @@ const Signup = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: wp('5%'), // Utilisation de wp pour le padding
     justifyContent: 'center',
     backgroundColor: '#EEEEEE',
   },
-  sign: {
-    bottom: 145,
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500', 
-  },
   title: {
-    fontSize: 24,
+    fontSize: wp('7%'),
     fontWeight: 'bold',
-    bottom: 80,
+    marginBottom: hp('3%'),
+    right:wp('1%')
   },
   subText: {
-    fontSize: 16,
-    marginBottom: 20,
+    fontSize: wp('4%'),
+    marginBottom: hp('15%'),
     color: '#666',
-    bottom: 60,
   },
   highlightText: {
     color: '#DC5F00',
@@ -80,27 +75,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 40,
-    paddingHorizontal: 10,
+    borderRadius: wp('2%'),
+    marginBottom: hp('3%'),
+    paddingHorizontal: wp('3%'),
+    height: hp('6%'),
   },
   icon: {
-    marginRight: 10,
+    marginRight: wp('3%'), // Espacement ajusté
   },
   input: {
     flex: 1,
-    height: 50,
+    height: hp('6%'), 
+    fontSize: wp('4.5%'), 
   },
   button: {
     backgroundColor: '#DC5F00',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: hp('2.5%'), 
+    borderRadius: wp('2%'),
     alignItems: 'center',
-    marginBottom: 20,
+    marginTop: hp('4%'), 
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('5%'), 
     fontWeight: 'bold',
   },
 });
