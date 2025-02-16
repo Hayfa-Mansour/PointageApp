@@ -18,6 +18,7 @@ const Signup = () => {
         <TextInput
           style={styles.input}
           placeholder="Nom d'utilisateur"
+          placeholderTextColor="#999"
         />
       </View>
 
@@ -27,6 +28,7 @@ const Signup = () => {
         <TextInput
           style={styles.input}
           placeholder="Adresse e-mail"
+          placeholderTextColor="#999"
           keyboardType="email-address"
         />
       </View>
@@ -37,13 +39,14 @@ const Signup = () => {
         <TextInput
           style={styles.input}
           placeholder="Mot de passe"
+          placeholderTextColor="#999"
           secureTextEntry
         />
       </View>
 
       {/* Bouton Créer un compte */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Créer un compte</Text>
+      <TouchableOpacity style={styles.signInButton}>
+        <Text style={styles.signInButtonText}>Créer un compte</Text>
       </TouchableOpacity>
     </View>
   );
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: wp('7%'),
     fontWeight: 'bold',
     marginBottom: hp('3%'),
-    right:wp('1%')
+    right: wp('1%'),
   },
   subText: {
     fontSize: wp('4%'),
@@ -85,19 +88,20 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: hp('6%'), 
-    fontSize: wp('4.5%'), 
+    height: hp('6%'),
+    fontSize: wp('4.5%'),
   },
-  button: {
+  signInButton: {
     backgroundColor: '#DC5F00',
-    paddingVertical: hp('2.5%'), 
+    paddingVertical: hp('1.5%'), 
+    paddingHorizontal: wp('6%'), 
     borderRadius: wp('2%'),
     alignItems: 'center',
-    marginTop: hp('4%'), 
+    marginTop: hp('4%'),
   },
-  buttonText: {
+  signInButtonText: {
     color: '#fff',
-    fontSize: wp('5%'), 
+    fontSize: wp('4.5%'), 
     fontWeight: 'bold',
   },
 });

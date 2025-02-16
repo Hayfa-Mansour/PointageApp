@@ -70,14 +70,15 @@ const styles = StyleSheet.create({
   },
   signInButton: {
     backgroundColor: '#DC5F00',
-    paddingVertical: hp('2.5%'), 
+    paddingVertical: hp('1.5%'), 
+    paddingHorizontal: wp('6%'), 
     borderRadius: wp('2%'),
     alignItems: 'center',
-    marginTop: hp('3%'), 
+    marginTop: hp('4%'),
   },
   signInButtonText: {
     color: '#fff',
-    fontSize: wp('5%'), // Taille du texte responsive
+    fontSize: wp('4.5%'), 
     fontWeight: 'bold',
   },
 });

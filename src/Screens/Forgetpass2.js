@@ -132,14 +132,15 @@ const styles = StyleSheet.create({
   },
   suivButton: {
     backgroundColor: '#DC5F00',
-    paddingVertical: hp('2.5%'), 
+    paddingVertical: hp('1.5%'), 
+    paddingHorizontal: wp('6%'), 
     borderRadius: wp('2%'),
     alignItems: 'center',
-    marginBottom: hp('2%'), 
+    marginTop: hp('4%'),
   },
   suivButtonText: {
     color: '#fff',
-    fontSize: wp('5%'),
+    fontSize: wp('4.5%'), 
     fontWeight: 'bold',
   },
   recuText: {
