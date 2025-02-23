@@ -1,10 +1,11 @@
 import React from 'react';
+import { View } from 'react-native'; 
 import Authstack from './src/navigation/Authstack';
 
 
-
-
 const App = () => {
+
+
   return <Authstack/>
 };
 

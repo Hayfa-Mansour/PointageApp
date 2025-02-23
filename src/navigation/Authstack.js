@@ -7,6 +7,8 @@ import Signup from '../Screens/Signup';
 import Forgetpass from '../Screens/Forgetpass1';
 import Verifycode from '../Screens/Forgetpass2';
 import Modepasse from '../Screens/Forgetpass3';
+import Home from '../Screens/Home';
+import CheckIn from '../Screens/CheckIn';
 
 
 const Stack = createStackNavigator();
@@ -22,8 +24,8 @@ const Stack = createStackNavigator();
         <Stack.Screen name="forget" component={Forgetpass} options={{ headerShown: true , title: 'Mot de Passe Oublié' }} />
         <Stack.Screen name="verify" component={Verifycode} options={{ headerShown: true , title: 'Vérification par e-mail'  }} />
        <Stack.Screen name="modepasse" component={Modepasse} options={{ headerShown: true,title: 'Modification Mot de passe '  }} /> 
-       
-        
+       <Stack.Screen name="home" component={Home} options={{ headerShown: false,}} /> 
+       <Stack.Screen name="checkin" component={CheckIn} options={{ headerShown: true, title: 'CheckIn' }} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

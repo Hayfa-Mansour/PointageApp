@@ -15,7 +15,6 @@ export default function Login({ navigation }) {
     } else {
       setError(false);
       Alert.alert('Succès', 'Connexion réussie !');
-      navigation.navigate('home');
     }
   };
 
@@ -46,7 +45,7 @@ export default function Login({ navigation }) {
 
       {error && <Text style={styles.errorText}>Vous devez cocher "Conditions" pour continuer.</Text>}
 
-      <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+      <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('home')}>
         <Text style={styles.signInButtonText}>Connexion</Text>
       </TouchableOpacity>
 

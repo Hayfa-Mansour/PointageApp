@@ -45,7 +45,7 @@ const Signup = () => {
       </View>
 
       {/* Bouton Créer un compte */}
-      <TouchableOpacity style={styles.signInButton}>
+      <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate('Home')}>
         <Text style={styles.signInButtonText}>Créer un compte</Text>
       </TouchableOpacity>
     </View>
