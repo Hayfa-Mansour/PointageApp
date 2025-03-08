@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert,} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Alert, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
 import moment from 'moment';
 import axios from 'axios';
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
 
 const API_KEY = 'AlzaSyk-0BJ-qKkro4Y5zw_mhBjO5kKrC7YicgE';
 const API_URL = 'https://maps.gomaps.pro/maps/api/geocode/json';
 
-const CheckIn = () => {
+const { width } = Dimensions.get('window'); 
+
+const Check = () => {
   const [currentDate, setCurrentDate] = useState('');
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState('');
@@ -59,7 +61,6 @@ const CheckIn = () => {
             }
           });
 
-          // Construction d'une adresse complète détaillée
           const formattedAddress = `${quartier ? quartier + ' - ' : ''}${village ? village + ' - ' : ''}${ville ? ville + ' - ' : ''}${gouvernorat}`;
           setAddress(formattedAddress || 'Adresse introuvable');
         } else {
@@ -93,10 +94,16 @@ const CheckIn = () => {
           </View>
         </View>
 
-        {/* Bouton de confirmation */}
-        <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Check-in effectué')}>
-          <Text style={styles.buttonText}>Confirmer</Text>
-        </TouchableOpacity>
+        {/* Conteneur pour les boutons */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Check-in effectué')}>
+            <Text style={styles.buttonText}>Check In</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Check-out effectué')}>
+            <Text style={styles.buttonText}>Check Out</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -105,7 +112,7 @@ const CheckIn = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop:50,
+    marginTop: 50,
     alignItems: 'center',
     backgroundColor: '#EEEEEE',
     padding: 20,
@@ -121,8 +128,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5,
-    borderColor:"#6A9C89",
-    borderWidth:1
+    borderColor: "#6A9C89",
+    borderWidth: 1,
   },
   infoContainer: {
     width: '100%',
@@ -138,11 +145,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: '#555',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
   button: {
     backgroundColor: '#6A9C89',
     padding: 15,
     borderRadius: 10,
-    width: '100%',
+    width: '48%', // Largeur relative pour s'adapter à l'écran
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -157,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckIn;
+export default Check;
